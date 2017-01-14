@@ -65,9 +65,25 @@ public class MemberDAO  extends SQLiteOpenHelper{
     }
     public ArrayList<MemberBean> selectAll() { //readAll
         ArrayList<MemberBean> list = new ArrayList<MemberBean>();
-        String sql = "";
+        String sql = "SELECT id, pw, name, email, phone, photo, addr FROM Member;";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
+        if(cursor != null){
+            Log.d("member - ", "Exist !!");
+            cursor.moveToFirst();
+        }
+        do{
+            MemberBean member = new MemberBean();
+            member.setId(cursor.getString(0));
+            member.setPw(cursor.getString(1));
+            member.setName(cursor.getString(2));
+            member.setEmail(cursor.getString(3));
+            member.setPhone(cursor.getString(4));
+            member.setPhoto(cursor.getString(5));
+            member.setAddr(cursor.getString(6));
+            list.add(member);
+        }while(cursor.moveToNext());
+        Log.d("member count - ", String.valueOf(list.size()));
         return list;
     }
     public ArrayList<MemberBean> selectByName(String name) { //readGroup
@@ -79,9 +95,22 @@ public class MemberDAO  extends SQLiteOpenHelper{
     }
     public MemberBean selectById(String id) { //readOne
         MemberBean member = new MemberBean();
-        String sql = "";
+        String sql = "SELECT id, pw, name, email, phone, photo, addr FROM Member WHERE id = '" +id+"';";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
+        if(cursor.moveToNext()){
+//            Log.d("ID 결과: ",cursor.getString(1));
+            member.setId(cursor.getString(0));
+            member.setPw(cursor.getString(1));
+            member.setName(cursor.getString(2));
+            member.setEmail(cursor.getString(3));
+            member.setPhone(cursor.getString(4));
+            member.setPhoto(cursor.getString(5));
+            member.setAddr(cursor.getString(6));
+        }else{
+            member.setId("fail");
+        }
+        Log.d("login in result: ",member.getId());
         return member;
     }
     public MemberBean login(MemberBean param){
@@ -113,13 +142,14 @@ public class MemberDAO  extends SQLiteOpenHelper{
         return count;
     }
     public void update(MemberBean param) { //updateMember
-        String sql = "";
+        String sql = "UPDATE Member SET pw = '"+param.getPw()+"', name = '"+param.getName()+"', phone = '"+param.getPhone()+"', addr = '"+param.getAddr()+"'" +
+                " WHERE id = '"+param.getId()+"';";
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(sql);
         db.close();
     }
     public void delete(String id) { //deleteMember
-        String sql = "";
+        String sql = "DELETE FROM Member WHERE id ='"+id+"';";
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(sql);
         db.close();

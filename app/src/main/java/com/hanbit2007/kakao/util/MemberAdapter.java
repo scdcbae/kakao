@@ -41,17 +41,17 @@ public class MemberAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return list.size();
+        return list.size(); // 멤버 총 인원(= addapter count)
     }
 
     @Override
     public Object getItem(int i) {
-        return list.get(i);
+        return list.get(i); // 멤버 instance
     }
 
     @Override
     public long getItemId(int i) {
-        return i;
+        return i; // 배열의 id
     }
 
     @Override
@@ -67,8 +67,10 @@ public class MemberAdapter extends BaseAdapter{
         }else{
             holder = (ViewHolder) v.getTag();
         }
-        v = inflater.inflate(R.layout.member_list, null);
-        return null;
+        holder.ivPhoto.setImageResource(photos[i]);
+        holder.tvName.setText(list.get(i).getName());
+        holder.tvPhone.setText(list.get(i).getPhone());
+        return v;
     }
 
     //inner class

@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        regist_btn = (Button) findViewById(R.id.regist_btn);
-        menu_help = (Button) findViewById(R.id.menu_help);
-        menu_login = (Button) findViewById(R.id.menu_login);
         menu_home = (TextView) findViewById(R.id.menu_home);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
@@ -66,11 +63,9 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 //                Toast.makeText(MainActivity.this, "Click Join", Toast.LENGTH_LONG).show();
                 this.startActivity(new Intent(MainActivity.this, RegistActivity.class));
                 break;
-/*
             case R.id.menu_help:
-                startActivity(new Intent(MainActivity.this, HelpActivity.class));
+                startActivity(new Intent(MainActivity.this, null/*HelpActivity.class*/));
                 break;
-*/
             case R.id.menu_login:
                 this.startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;

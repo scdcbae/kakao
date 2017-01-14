@@ -1,11 +1,14 @@
 package com.hanbit2007.kakao.domain;
 
+import android.util.Log;
+
 /**
  * Created by hb2007 on 2017-01-07.
  */
 
 public class MemberBean {
     private String id, pw, name, email, phone, photo, addr;
+    private int iphoto;
 
     public String getId() {
         return id;
@@ -47,8 +50,11 @@ public class MemberBean {
         this.phone = phone;
     }
 
-    public String getPhoto() {
-        return photo;
+    public int getPhoto() {
+        iphoto = Integer.valueOf(photo);
+        Log.d("???????????????????? string:", ">>"+photo+"<<");
+        Log.d("???????????????????? int:", ">>"+iphoto+"<<");
+        return iphoto;
     }
 
     public void setPhoto(String photo) {
