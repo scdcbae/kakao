@@ -54,10 +54,10 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btUpdate:
                 MemberBean temp = new MemberBean();
                 temp.setId(tvID.getText().toString());
-                temp.setPw((etPass.getText().toString() == null)?member.getPw():etPass.getText().toString());
-                temp.setName((etName.getText().toString() == null)?member.getName():etName.getText().toString());
-                temp.setPhone((etTel.getText().toString() == null)?member.getPhone():etTel.getText().toString());
-                temp.setAddr((etAddr.getText().toString() == null)?member.getAddr():etAddr.getText().toString());
+                temp.setPw((etPass.getText().toString().equals(""))?member.getPw():etPass.getText().toString());
+                temp.setName((etName.getText().toString().equals(""))?member.getName():etName.getText().toString());
+                temp.setPhone((etTel.getText().toString().equals(""))?member.getPhone():etTel.getText().toString());
+                temp.setAddr((etAddr.getText().toString().equals(""))?member.getAddr():etAddr.getText().toString());
                 service.modify(temp);
                 break;
             case R.id.btCall:
