@@ -23,6 +23,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     ImageView Iv_Photo;
     Phone phone;
 
+    /*
     private int[]photos={
             R.drawable.cupcake,
             R.drawable.donut,
@@ -35,7 +36,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             R.drawable.kitkat,
             R.drawable.lollipop
     };
-
+*/
 
     MemberService service;
     MemberBean member;
@@ -96,6 +97,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btMap:
                 //활성화 시 엄청 느려짐.
+                Intent intent_map = new Intent(DetailActivity.this, MapsActivity.class);
+                //위도 경도 값을 넘겨주어야 함. site => http://mygeoposition.com/
+                member.setAddr("37.5597680,126.9423080");
+                intent_map.putExtra("position", member.getAddr());
+                startActivity(intent_map);
                 break;
             case R.id.btMessage:
                 //웹뷰가 되어야 가능.
