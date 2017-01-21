@@ -9,6 +9,18 @@
         android:text="UPDATE"
         android:textSize="30dp"
         android:gravity="center"/>
+
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <ImageView
+            android:id="@+id/Iv_Photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
     <LinearLayout android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -83,6 +95,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="input Address!"/>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Photo:"/>
+        <EditText
+            android:id="@+id/etPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="input Photo!"/>
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content"
         android:layout_width="match_parent"

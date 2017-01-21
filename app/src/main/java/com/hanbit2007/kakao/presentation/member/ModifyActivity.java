@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hanbit2007.kakao.R;
@@ -15,8 +16,10 @@ import com.hanbit2007.kakao.service.MemberServiceImpl;
 
 public class ModifyActivity extends AppCompatActivity implements View.OnClickListener{
     TextView tvID;
-    EditText etPass, etName, etTel, etAddr;
+    EditText etPass, etName, etTel, etAddr, etPhoto;
+    ImageView Iv_Photo;
     Button btUpdate, btCancel;
+//    ImageView IvPhoto;
     MemberService service;
     MemberBean member;
 
@@ -34,8 +37,13 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
         etName = (EditText) findViewById(R.id.etName);
         etTel = (EditText) findViewById(R.id.etTel);
         etAddr = (EditText) findViewById(R.id.etAddr);
+        etPhoto = (EditText) findViewById(R.id.etPhoto);
+//        Iv_Photo = (ImageView) findViewById(R.id.Iv_Photo);
         btUpdate = (Button) findViewById(R.id.btUpdate);
         btCancel = (Button) findViewById(R.id.btCancel);
+
+  //      int foo = getResources().getIdentifier(this.getPackageName() + ":drawable/" + "donut", null, null);
+    //    IvPhoto.setImageDrawable(getResources().getDrawable(foo, getApplicationContext().getTheme()));
 
         btUpdate.setOnClickListener(this);
         btCancel.setOnClickListener(this);
@@ -58,6 +66,7 @@ public class ModifyActivity extends AppCompatActivity implements View.OnClickLis
                 temp.setName((etName.getText().toString().equals(""))?member.getName():etName.getText().toString());
                 temp.setPhone((etTel.getText().toString().equals(""))?member.getPhone():etTel.getText().toString());
                 temp.setAddr((etAddr.getText().toString().equals(""))?member.getAddr():etAddr.getText().toString());
+                temp.setPhoto((etPhoto.getText().toString().equals(""))?member.getPhoto():etPhoto.getText().toString());
                 service.modify(temp);
                 break;
             case R.id.btCall:

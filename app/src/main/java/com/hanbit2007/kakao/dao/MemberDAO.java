@@ -41,16 +41,16 @@ public class MemberDAO  extends SQLiteOpenHelper{
                 "    FOREIGN KEY(id) REFERENCES Member(id)\n" +
                 ");");
 
- /*       db.execSQL("INSERT INTO Member (id, pw, name, email, phone, photo, addr)\n" +
-                "VALUES('hong', '1', '홍길동','hong@test.com','100', 'default.jpg', '서울');");
         db.execSQL("INSERT INTO Member (id, pw, name, email, phone, photo, addr)\n" +
-                "VALUES('gil', '1', '길 씨','hong@test.com','100', 'default.jpg', '서울');");
+                "VALUES('hong', '1', '홍길동','hong@test.com','100', 'default_profile', '서울');");
         db.execSQL("INSERT INTO Member (id, pw, name, email, phone, photo, addr)\n" +
-                "VALUES('dong', '1', '동 씨','hong@test.com','100', 'default.jpg', '서울');");
+                "VALUES('gil', '1', '길 씨','hong@test.com','100', 'default_profile', '서울');");
         db.execSQL("INSERT INTO Member (id, pw, name, email, phone, photo, addr)\n" +
-                "VALUES('gogildong', '1', '고길동','hong@test.com','100', 'default.jpg', '서울');");
+                "VALUES('dong', '1', '동 씨','hong@test.com','100', 'default_profile', '서울');");
         db.execSQL("INSERT INTO Member (id, pw, name, email, phone, photo, addr)\n" +
-                "VALUES('heedong', '1', '희동','hong@test.com','100', 'default.jpg', '서울');");*/
+                "VALUES('gogildong', '1', '고길동','hong@test.com','100', 'default_profile', '서울');");
+        db.execSQL("INSERT INTO Member (id, pw, name, email, phone, photo, addr)\n" +
+                "VALUES('heedong', '1', '희동','hong@test.com','100', 'default_profile', '서울');");
     }
 
     @Override
@@ -142,7 +142,7 @@ public class MemberDAO  extends SQLiteOpenHelper{
         return count;
     }
     public void update(MemberBean param) { //updateMember
-        String sql = "UPDATE Member SET pw = '"+param.getPw()+"', name = '"+param.getName()+"', phone = '"+param.getPhone()+"', addr = '"+param.getAddr()+"'" +
+        String sql = "UPDATE Member SET pw = '"+param.getPw()+"', name = '"+param.getName()+"', phone = '"+param.getPhone()+"', addr = '"+param.getAddr()+"', photo = '"+param.getPhoto()+"'" +
                 " WHERE id = '"+param.getId()+"';";
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(sql);

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.hanbit2007.kakao.R;
 import com.hanbit2007.kakao.domain.MemberBean;
+import com.hanbit2007.kakao.presentation.message.WriteMsgActivity;
 import com.hanbit2007.kakao.service.MemberService;
 import com.hanbit2007.kakao.service.MemberServiceImpl;
 import com.hanbit2007.kakao.util.Phone;
@@ -61,7 +62,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         tvName.setText(member.getName());
         tvTel.setText(member.getPhone());
         tvAddr.setText(member.getAddr());
-        Iv_Photo.setImageResource(R.drawable.cupcake); //????????????????
+        //Iv_Photo.setImageResource(R.drawable.cupcake); //????????????????
+
+//        int foo = getResources().getIdentifier(this.getPackageName() + ":drawable/" + "donut", null, null);
+//int foo = getResources().getIdentifier(this.getPackageName() + ":drawable/" + member.getPhoto(), null, null);
+        Log.d("DB 프로필 이미지: ", member.getPhoto());
+//        String PhotoName = member.getPhoto().substring(member.getPhoto().length()-4, member.getPhoto().length());
+//        int foo = getResources().getIdentifier(this.getPackageName() + ":drawable/" + PhotoName, null, null);
+        int foo = getResources().getIdentifier(this.getPackageName() + ":drawable/" + member.getPhoto(), null, null);
+        Iv_Photo.setImageDrawable(getResources().getDrawable(foo, getApplicationContext().getTheme()));
 
         btCall = (Button) findViewById(R.id.btCall);
         btMap = (Button) findViewById(R.id.btMap);
@@ -90,6 +99,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btMessage:
                 //웹뷰가 되어야 가능.
+                Intent intent_msg = new Intent(DetailActivity.this, WriteMsgActivity.class);
+                intent_msg.putExtra("phone", member.getPhone());
+                startActivity(intent_msg);
                 break;
             case R.id.btUpdate:
                 Intent intent = new Intent(DetailActivity.this, ModifyActivity.class);

@@ -1,14 +1,12 @@
 package com.hanbit2007.kakao.domain;
 
-import android.util.Log;
-
 /**
  * Created by hb2007 on 2017-01-07.
  */
 
 public class MemberBean {
     private String id, pw, name, email, phone, photo, addr;
-    private int iphoto;
+//    private int iphoto;
 
     public String getId() {
         return id;
@@ -50,11 +48,12 @@ public class MemberBean {
         this.phone = phone;
     }
 
-    public int getPhoto() {
-        iphoto = Integer.valueOf(photo);
-        Log.d("???????????????????? string:", ">>"+photo+"<<");
-        Log.d("???????????????????? int:", ">>"+iphoto+"<<");
-        return iphoto;
+    public String getPhoto() {
+//        iphoto = Integer.valueOf(photo);
+//        iPhoto = photo
+//        Log.d("???????????????????? string:", ">>"+photo+"<<");
+//        Log.d("???????????????????? int:", ">>"+iphoto+"<<");
+        return photo;
     }
 
     public void setPhoto(String photo) {
